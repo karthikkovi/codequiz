@@ -30,3 +30,15 @@ let questions = [
         correct : "C"
     }
 ]
+
+let lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+
+function renderQuestion() {
+    let q = questions[runningQuestion];
+
+    quiz.innerHTML = `<p> ${q.question} </p>`;
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+}
