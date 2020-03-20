@@ -28,8 +28,16 @@
 ]
 */
 
-let score =0;
+let score = 0;
 let timer = 29;
+
+function reply_click(clicked_id) {
+    if(clicked_id === "q1A" || clicked_id === "q2A") {
+        score ++
+    } else {
+        timer -= 10;
+    }
+}
 
 
 $("#start").on("click", () => {
@@ -38,11 +46,16 @@ $("#start").on("click", () => {
     document.getElementById("question1").style.display = "block";
     document.getElementById("start").style.display = "none";
 
-    setInterval(()=>{
+    if (timer > 0) {
+    setInterval(() => {
         $("#timer").text("Time left: " + timer);
-        timer --;
-    }, 1000)
+        
+        timer--;
 
+    }, 1000)}
+    else {
+        $("#highScore").text("High Score: " + score);
+    }
 })
 
 $("#next").on("click", () => {
@@ -50,4 +63,11 @@ $("#next").on("click", () => {
     document.getElementById("next").style.display = "none";
     document.getElementById("question2").style.display = "block";
     document.getElementById("question1").style.display = "none";
+})
+
+$("#finish").on("click", () => {
+    document.getElementById("question2").style.display = "none";
+    document.getElementById("finish").style.display = "none";
+
+    $("#highScore").text("High Score: " + score)
 })

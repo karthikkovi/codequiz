@@ -27,18 +27,18 @@
         <div id="quizContainer" class="ml-auto mr-auto mb-3" style="display: none;">
             <div id="question1" class="list-group" style="display: none;">
                 <h5 class="mb-3"> Question 1 : What does HTML stand for? </h5>
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action"> Hyper Text Markup Language </a>
-                    <a href="#" class="list-group-item list-group-item-action"> Hyperlink Text Markup Language </a>
-                    <a href="#" class="list-group-item list-group-item-action"> Home Text Markup Language </a>
+                <ul class="list-group answers">
+                    <a href="#" class="list-group-item list-group-item-action" onClick="reply_click(this.id)" id="q1A"> Hyper Text Markup Language </a>
+                    <a href="#" class="list-group-item list-group-item-action" onClick="reply_click(this.id)" id="q1B"> Hyperlink Text Markup Language </a>
+                    <a href="#" class="list-group-item list-group-item-action" onClick="reply_click(this.id)" id="q1C"> Home Text Markup Language </a>
                 </ul>
             </div>
             <div id="question2" class="list-group" style="display: none;">
                 <h5 class="mb-3"> Which one of these is a JavaScript package manager? </h5>
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action"> Node.js </a>
-                    <a href="#" class="list-group-item list-group-item-action">Type Script </a>
-                    <a href="#" class="list-group-item list-group-item-action"> npm </a>
+                <ul class="list-group answers">
+                    <a href="#" class="list-group-item list-group-item-action" onClick="reply_click(this.id)" id="q2A"> npm </a>
+                    <a href="#" class="list-group-item list-group-item-action" onClick="reply_click(this.id)" id="q2B">Type Script </a>
+                    <a href="#" class="list-group-item list-group-item-action" onClick="reply_click(this.id)" id="q2C">Node.js</a>
             </div>
           
             <button id="next" type="button" class="btn btn-primary ml-auto mr-auto mt-3">Next</button>
