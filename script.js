@@ -3,11 +3,7 @@
     when the user clicks on the button, need to display the first question and start the timer
     for every wrong answer, need to reduce the timer by 10 seconds.
     Need variable to keep count of the score, timer, questions
-*/
-
-let score =0;
-let timer = 60;
-let questions = [
+    let questions = [
     {
         question : "What does HTML stand for?",
         choiceA : "Hyper Text Markup Language",
@@ -30,12 +26,23 @@ let questions = [
         correct : "C"
     }
 ]
+*/
+
+let score =0;
+let timer = 29;
+
 
 $("#start").on("click", () => {
     document.getElementById("mainPage").style.display = "none";
     document.getElementById("quizContainer").style.display = "block";
     document.getElementById("question1").style.display = "block";
     document.getElementById("start").style.display = "none";
+
+    setInterval(()=>{
+        $("#timer").text("Time left: " + timer);
+        timer --;
+    }, 1000)
+
 })
 
 $("#next").on("click", () => {
