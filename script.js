@@ -30,10 +30,11 @@
 
 let score = 0;
 let timer = 29;
+let highScore = localStorage.getItem("highScore");
 
 function reply_click(clicked_id) {
-    if(clicked_id === "q1A" || clicked_id === "q2A") {
-        score ++
+    if (clicked_id === "q1A" || clicked_id === "q2A") {
+        score++
     } else {
         timer -= 10;
     }
@@ -46,16 +47,22 @@ $("#start").on("click", () => {
     document.getElementById("question1").style.display = "block";
     document.getElementById("start").style.display = "none";
 
-    if (timer > 0) {
-    setInterval(() => {
+
+    let timerInterval = setInterval(() => {
         $("#timer").text("Time left: " + timer);
-        
+
         timer--;
 
-    }, 1000)}
-    else {
-        $("#highScore").text("High Score: " + score);
-    }
+        if (timer < 0) {
+
+            $("#score").text("Score: " + score)
+
+            clearInterval(timerInterval);
+
+        }
+
+    }, 1000)
+
 })
 
 $("#next").on("click", () => {
@@ -69,5 +76,15 @@ $("#finish").on("click", () => {
     document.getElementById("question2").style.display = "none";
     document.getElementById("finish").style.display = "none";
 
-    $("#highScore").text("High Score: " + score)
+    document.getElementById("score").style.display = "block";
+    $("#score").text("Score: " + score)
+
+    if (score > highScore) {
+        $("#highScore").text("High Score: " + score);
+        localStorage.setItem("highScore", score);
+    }
+})
+
+$("#highScore").on("click", () => {
+    $("#highScore").text("High Score: " + highScore)
 })
