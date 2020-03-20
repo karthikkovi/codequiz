@@ -32,6 +32,10 @@ let score = 0;
 let timer = 29;
 let highScore = localStorage.getItem("highScore");
 
+if (highScore ===  null) {
+    highScore = 0;
+}
+
 function reply_click(clicked_id) {
     if (clicked_id === "q1A" || clicked_id === "q2A") {
         score++
@@ -55,7 +59,14 @@ $("#start").on("click", () => {
 
         if (timer < 0) {
 
+            document.getElementById("question1").style.display = "none";
+            document.getElementById("question2").style.display = "none";
+            document.getElementById("finish").style.display = "none";
+            document.getElementById("next").style.display = "none";
+
             $("#score").text("Score: " + score)
+            document.getElementById("score").style.display = "block";
+            
 
             clearInterval(timerInterval);
 
@@ -87,4 +98,8 @@ $("#finish").on("click", () => {
 
 $("#highScore").on("click", () => {
     $("#highScore").text("High Score: " + highScore)
+})
+
+$("#clearScore").on("click", () => {
+    localStorage.clear();
 })
