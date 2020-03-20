@@ -24,11 +24,25 @@
             <button id="start" type="button" class="btn btn-primary">Start the quiz</button>
         </div>
 
-        <div id="quizConatiner" style="display: none;">
-            <div id="choices">
-                <div class="choice" id="choiceA" onclick="checkAnswer('A')">A</div>
-                <div class="choice" id="choiceB" onclick="checkAnswer('B')">B</div>
-                <div class="choice" id="choiceC" onclick="checkAnswer('C')">C</div>
+        <div id="quizContainer" style="display: none;">
+            <div id="question1" style="display: none;">
+                question : "What does HTML stand for?",
+                choiceA : "Hyper Text Markup Language",
+                choiceB : "Hyperlink Text Markup Language",
+                choiceC : "Home Text Markup Language",
+            </div>
+            <div id="question2" style="display: none;">
+                question : "Which one of these is a JavaScript package manager?",
+                choiceA : "Node.js",
+                choiceB : "Type Script",
+                choiceC : "npm",
+
+            </div>
+            <div id="question3" style="display: none;">
+                question : "Which tool can you use to ensure code quality?",
+                choiceA : "Angular",
+                choiceB : "RequireJS",
+                choiceC: "ESLint",
             </div>
 
         </div>
@@ -43,7 +57,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

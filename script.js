@@ -1,12 +1,12 @@
-const start = document.getElementById("start");
-const quiz = document.getElementById("quizConatiner");
-const choiceA = document.getElementById("A");
-const choiceB = document.getElementById("B");
-const choiceC = document.getElementById("C");
-const score = 0;
-const highScore = document.getElementById("highScore");
-const timer = document.getElementById("timer");
+/*
+    Need a button to start the quiz.
+    when the user clicks on the button, need to display the first question and start the timer
+    for every wrong answer, need to reduce the timer by 10 seconds.
+    Need variable to keep count of the score, timer, questions
+*/
 
+let score =0;
+let timer = 60;
 let questions = [
     {
         question : "What does HTML stand for?",
@@ -31,14 +31,8 @@ let questions = [
     }
 ]
 
-let lastQuestion = questions.length - 1;
-let runningQuestion = 0;
-
-function renderQuestion() {
-    let q = questions[runningQuestion];
-
-    quiz.innerHTML = `<p> ${q.question} </p>`;
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-}
+$("#start").on("click", () => {
+    document.getElementById("quizContainer").style.display = "block";
+    document.getElementById("question1").style.display = "block";
+    document.getElementById("start").style.display = "none";
+})
