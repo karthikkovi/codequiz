@@ -18,32 +18,31 @@
         <a href="#" class="nav-item ml-auto" id="timer">Time</a>
     </nav>
     <main class="row">
-        <div class="container col-lg-6 col-md-8 col-sm-12 mt-3">
+        <div class="container col-lg-6 col-md-8 col-sm-12 mt-3" id="mainPage">
             <h1>Coding Quiz Challenge</h1>
             <p>Welcome to JavaScript coding quiz. Push the submit button to start the quiz</p>
             <button id="start" type="button" class="btn btn-primary">Start the quiz</button>
         </div>
 
-        <div id="quizContainer" style="display: none;">
-            <div id="question1" style="display: none;">
-                question : "What does HTML stand for?",
-                choiceA : "Hyper Text Markup Language",
-                choiceB : "Hyperlink Text Markup Language",
-                choiceC : "Home Text Markup Language",
+        <div id="quizContainer" class="ml-auto mr-auto mb-3" style="display: none;">
+            <div id="question1" class="list-group" style="display: none;">
+                <h5 class="mb-3"> Question 1 : What does HTML stand for? </h5>
+                <ul class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action"> Hyper Text Markup Language </a>
+                    <a href="#" class="list-group-item list-group-item-action"> Hyperlink Text Markup Language </a>
+                    <a href="#" class="list-group-item list-group-item-action"> Home Text Markup Language </a>
+                </ul>
             </div>
-            <div id="question2" style="display: none;">
-                question : "Which one of these is a JavaScript package manager?",
-                choiceA : "Node.js",
-                choiceB : "Type Script",
-                choiceC : "npm",
-
+            <div id="question2" class="list-group" style="display: none;">
+                <h5 class="mb-3"> Which one of these is a JavaScript package manager? </h5>
+                <ul class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action"> Node.js </a>
+                    <a href="#" class="list-group-item list-group-item-action">Type Script </a>
+                    <a href="#" class="list-group-item list-group-item-action"> npm </a>
             </div>
-            <div id="question3" style="display: none;">
-                question : "Which tool can you use to ensure code quality?",
-                choiceA : "Angular",
-                choiceB : "RequireJS",
-                choiceC: "ESLint",
-            </div>
+          
+            <button id="next" type="button" class="btn btn-primary ml-auto mr-auto mt-3">Next</button>
+            <button id="finish" type="button" class="btn btn-primary ml-auto mr-auto mt-3" style="display: none">Finish</button>
 
         </div>
     </main>

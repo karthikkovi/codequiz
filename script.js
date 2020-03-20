@@ -32,7 +32,15 @@ let questions = [
 ]
 
 $("#start").on("click", () => {
+    document.getElementById("mainPage").style.display = "none";
     document.getElementById("quizContainer").style.display = "block";
     document.getElementById("question1").style.display = "block";
     document.getElementById("start").style.display = "none";
+})
+
+$("#next").on("click", () => {
+    document.getElementById("finish").style.display = "block";
+    document.getElementById("next").style.display = "none";
+    document.getElementById("question2").style.display = "block";
+    document.getElementById("question1").style.display = "none";
 })
