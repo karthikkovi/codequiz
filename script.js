@@ -1,41 +1,16 @@
-/*
-    Need a button to start the quiz.
-    when the user clicks on the button, need to display the first question and start the timer
-    for every wrong answer, need to reduce the timer by 10 seconds.
-    Need variable to keep count of the score, timer, questions
-    let questions = [
-    {
-        question : "What does HTML stand for?",
-        choiceA : "Hyper Text Markup Language",
-        choiceB : "Hyperlink Text Markup Language",
-        choiceC : "Home Text Markup Language",
-        correct: "A"
-    },
-    {
-        question : "Which one of these is a JavaScript package manager?",
-        choiceA : "Node.js",
-        choiceB : "Type Script",
-        choiceC : "npm",
-        correct: "C"
-    },
-    {
-        question : "Which tool can you use to ensure code quality?",
-        choiceA : "Angular",
-        choiceB : "RequireJS",
-        choiceC: "ESLint",
-        correct : "C"
-    }
-]
-*/
+//Declaring the initial variables
 
 let score = 0;
-let timer = 29;
+let timer = 29; // Declared as 29, to compensate for the delay when the button is clicked and timer is triggered
+
+// Added logic to prevent high score from displaying as null
 let highScore = localStorage.getItem("highScore");
 
 if (highScore ===  null) {
     highScore = 0;
 }
 
+// Function to read the values of the answers clicked and incrementing the score or decrementing the timer
 function reply_click(clicked_id) {
     if (clicked_id === "q1A" || clicked_id === "q2A") {
         score++
@@ -44,13 +19,14 @@ function reply_click(clicked_id) {
     }
 }
 
-
+// To change the CSS styles of the elements when the start button is clicked
 $("#start").on("click", () => {
     document.getElementById("mainPage").style.display = "none";
     document.getElementById("quizContainer").style.display = "block";
     document.getElementById("question1").style.display = "block";
     document.getElementById("start").style.display = "none";
 
+    // Declaring the timer interval function
 
     let timerInterval = setInterval(() => {
         $("#timer").text("Time left: " + timer);
@@ -76,6 +52,7 @@ $("#start").on("click", () => {
 
 })
 
+// Changing the CSS properties based on the buttons clicked
 $("#next").on("click", () => {
     document.getElementById("finish").style.display = "block";
     document.getElementById("next").style.display = "none";
@@ -90,16 +67,19 @@ $("#finish").on("click", () => {
     document.getElementById("score").style.display = "block";
     $("#score").text("Score: " + score)
 
+    //Setting the local storage if the score entered is the high score
     if (score > highScore) {
         $("#highScore").text("High Score: " + score);
         localStorage.setItem("highScore", score);
     }
 })
 
+//displaying the high score
 $("#highScore").on("click", () => {
     $("#highScore").text("High Score: " + highScore)
 })
 
+//To clear local storage
 $("#clearScore").on("click", () => {
     localStorage.clear();
 })

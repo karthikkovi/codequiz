@@ -5,25 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
+    <!-- Used Nav bar to position the high sore and timer on top -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="#" class="nav-item" id="highScore">View highscores</a>
         <a href="#" class="nav-item ml-auto" id="timer">Timer</a>
     </nav>
     <main class="row">
+        <!-- Boot strap container to display the initial screen -->
         <div class="container col-lg-6 col-md-8 col-sm-12 mt-3" id="mainPage">
             <h1>Coding Quiz Challenge</h1>
             <p>Welcome to JavaScript coding quiz. Push the submit button to start the quiz</p>
             <button id="start" type="button" class="btn btn-primary">Start the quiz</button>
         </div>
 
+        <!-- Quiz container to show the questions -->
         <div id="quizContainer" class="ml-auto mr-auto mb-3" style="display: none;">
             <div id="question1" class="list-group" style="display: none;">
                 <h5 class="mb-3"> Question 1 : What does HTML stand for? </h5>
@@ -44,9 +45,11 @@
             <button id="next" type="button" class="btn btn-primary ml-auto mr-auto mt-3">Next</button>
             <button id="finish" type="button" class="btn btn-primary ml-auto mr-auto mt-3" style="display: none">Finish</button>
 
+            <!-- Conatiner to show the final score -->
             <div class="container col-lg-6 col-md-8 col-sm-12 mt-3" id="score" style="display: none;">
                 <p>Score</p>
             </div>
+            <!-- Persistant clear score button to show the scores -->
             <button id="clearScore" type="button" class="btn btn-primary ml-auto mr-auto mt-3">Clear Score</button>
 
         </div>
