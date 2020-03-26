@@ -45,22 +45,21 @@ $("#start").on("click", () => {
 
     document.getElementById("mainPage").style.display = "none";
 
-    for (let i=0; i<questions.length; i++){
-    $(".questionScreen").append(`<h1> ${questions[i].title} <h1>`);
+    $(".questionScreen").append(`${questions[0].title}`);
 
-    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="a"> ${questions[i].choices[0]} </a>`)
-    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="b"> ${questions[i].choices[1]} </a>`)
-    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="c"> ${questions[i].choices[2]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="a"> ${questions[0].choices[0]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="b"> ${questions[0].choices[1]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="c"> ${questions[0].choices[2]} </a>`)
 
     $(".list-group-item").on("click", (e) => {
         let selectedAnswer = e.currentTarget.attributes[2].nodeValue;
         console.log(selectedAnswer)
-        if (selectedAnswer === questions[i].answer) {
+        if (selectedAnswer === questions[0].answer) {
             score ++
         }
-        $(".questionScreen").empty();
+        $(".questionSpace").empty();
     })
-}
+
 
     // Declaring the timer interval function
 
