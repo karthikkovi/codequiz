@@ -18,15 +18,5 @@ const questions = [
           "'str'.toUpperCase"
         ],
         answer: "'str'.toUpperCase()"
-    },
-    {
-        title: "What is the outcome of this statement?",
-        choices: [
-          "hi! is printed to the console",
-          "3 is printed to the console",
-          "'hi!'.length will be printed to the console",
-          "1 is printed to the console"
-        ],
-        answer: "3 is printed to the console"
-      }
+    }
 ]
