@@ -1,3 +1,24 @@
+const questions = [
+    {
+        title: "What does HTML stand for?",
+        choices: ["Hyper Text Markup Language", "Hyperlink Text Markup Language", "Home Text Markup Language"],
+        answer: "a"
+    },
+    {
+        title: " Which one of these is a JavaScript package manager?",
+        choices: ["npm", "Type Script", "Node.js"],
+        answer: "a"
+    },
+    {
+        title: 'What is the correct way to call a string’s built-in method?',
+        choices: [
+          "toUpperCase('str')",
+          "'str'.toUpperCase()",
+          "'str'.toUpperCase"
+        ],
+        answer: "b"
+    }
+]
 //Declaring the initial variables
 
 let score = 0;
@@ -21,10 +42,25 @@ function reply_click(clicked_id) {
 
 // To change the CSS styles of the elements when the start button is clicked
 $("#start").on("click", () => {
+
     document.getElementById("mainPage").style.display = "none";
-    document.getElementById("quizContainer").style.display = "block";
-    document.getElementById("question1").style.display = "block";
-    document.getElementById("start").style.display = "none";
+
+    for (let i=0; i<questions.length; i++){
+    $(".questionScreen").append(`<h1> ${questions[i].title} <h1>`);
+
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="a"> ${questions[i].choices[0]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="b"> ${questions[i].choices[1]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="c"> ${questions[i].choices[2]} </a>`)
+
+    $(".list-group-item").on("click", (e) => {
+        let selectedAnswer = e.currentTarget.attributes[2].nodeValue;
+        console.log(selectedAnswer)
+        if (selectedAnswer === questions[i].answer) {
+            score ++
+        }
+        $(".questionScreen").empty();
+    })
+}
 
     // Declaring the timer interval function
 
@@ -53,12 +89,7 @@ $("#start").on("click", () => {
 })
 
 // Changing the CSS properties based on the buttons clicked
-$("#next").on("click", () => {
-    document.getElementById("finish").style.display = "block";
-    document.getElementById("next").style.display = "none";
-    document.getElementById("question2").style.display = "block";
-    document.getElementById("question1").style.display = "none";
-})
+
 
 $("#finish").on("click", () => {
     document.getElementById("question2").style.display = "none";
