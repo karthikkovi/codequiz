@@ -12,9 +12,9 @@ const questions = [
     {
         title: 'What is the correct way to call a string’s built-in method?',
         choices: [
-          "toUpperCase('str')",
-          "'str'.toUpperCase()",
-          "'str'.toUpperCase"
+            "toUpperCase('str')",
+            "'str'.toUpperCase()",
+            "'str'.toUpperCase"
         ],
         answer: "b"
     }
@@ -27,11 +27,35 @@ let timer = 29; // Declared as 29, to compensate for the delay when the button i
 // Added logic to prevent high score from displaying as null
 let highScore = localStorage.getItem("highScore");
 
-if (highScore ===  null) {
+if (highScore === null) {
     highScore = 0;
 }
 
 $("#start").on("click", () => {
+    // Declaring the timer interval function
+let timerInterval = setInterval(() => {
+    $("#timer").text("Time left: " + timer);
+
+    timer--;
+
+    if (timer < 0) {
+
+        document.querySelector(".questionSpace").style.display = "none";
+        document.getElementById("score").style.display = "block";
+        document.getElementById("mainPage").style.display = "none";
+        $("#score").text("Score: " + score)
+
+        //Setting the local storage if the score entered is the high score
+        if (score > highScore) {
+            $("#highScore").text("High Score: " + score);
+            localStorage.setItem("highScore", score);
+        }
+
+        clearInterval(timerInterval);
+
+    }
+
+}, 1000)
 
     document.getElementById("mainPage").style.display = "none";
     document.getElementById("finish").style.display = "block";
@@ -45,7 +69,7 @@ $("#start").on("click", () => {
         let selectedAnswer = e.currentTarget.attributes[2].nodeValue;
         console.log(selectedAnswer)
         if (selectedAnswer === questions[0].answer) {
-            score ++
+            score++
         }
         $(".questionScreen").empty();
         $(".answers").empty();
@@ -64,8 +88,8 @@ $("#finish").on("click", () => {
     if (score > highScore) {
         $("#highScore").text("High Score: " + score);
         localStorage.setItem("highScore", score);
-    }    
-    
+    }
+
 })
 
 //displaying the high score
@@ -78,30 +102,7 @@ $("#clearScore").on("click", () => {
     localStorage.clear();
 })
 
-    // Declaring the timer interval function
-    let timerInterval = setInterval(() => {
-        $("#timer").text("Time left: " + timer);
-    
-        timer--;
-    
-        if (timer < 0) {    
-            
-            document.querySelector(".questionSpace").style.display = "none";
-            document.getElementById("score").style.display = "block";
-            document.getElementById("mainPage").style.display = "none";
-            $("#score").text("Score: " + score)
-        
-            //Setting the local storage if the score entered is the high score
-            if (score > highScore) {
-                $("#highScore").text("High Score: " + score);
-                localStorage.setItem("highScore", score);
-            }
-    
-            clearInterval(timerInterval);
-    
-        }
-    
-    }, 1000)
+
 
 function displayQuestion() {
 
@@ -115,11 +116,11 @@ function displayQuestion() {
         let selectedAnswer = e.currentTarget.attributes[2].nodeValue;
         console.log(selectedAnswer)
         if (selectedAnswer === questions[0].answer) {
-            score ++
+            score++
         }
         $(".questionScreen").empty();
         $(".answers").empty();
-        displayQuestion2();       
+        displayQuestion2();
     })
 }
 
@@ -135,17 +136,17 @@ function displayQuestion2() {
         let selectedAnswer = e.currentTarget.attributes[2].nodeValue;
         console.log(selectedAnswer)
         if (selectedAnswer === questions[2].answer) {
-            score ++
+            score++
         }
-        
+
         document.querySelector(".questionSpace").style.display = "none";
         document.getElementById("score").style.display = "block";
         $("#score").text("Score: " + score)
-    
+
         //Setting the local storage if the score entered is the high score
         if (score > highScore) {
             $("#highScore").text("High Score: " + score);
             localStorage.setItem("highScore", score);
-        }   
+        }
     })
 }
