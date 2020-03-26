@@ -31,16 +31,6 @@ if (highScore ===  null) {
     highScore = 0;
 }
 
-// Function to read the values of the answers clicked and incrementing the score or decrementing the timer
-function reply_click(clicked_id) {
-    if (clicked_id === "q1A" || clicked_id === "q2A") {
-        score++
-    } else {
-        timer -= 10;
-    }
-}
-
-// To change the CSS styles of the elements when the start button is clicked
 $("#start").on("click", () => {
 
     document.getElementById("mainPage").style.display = "none";
