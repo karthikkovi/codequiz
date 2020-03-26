@@ -44,7 +44,7 @@ function reply_click(clicked_id) {
 $("#start").on("click", () => {
 
     document.getElementById("mainPage").style.display = "none";
-
+    document.getElementById("finish").style.display = "block";
     $(".questionScreen").append(`${questions[0].title}`);
 
     $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="a"> ${questions[0].choices[0]} </a>`)
@@ -57,43 +57,16 @@ $("#start").on("click", () => {
         if (selectedAnswer === questions[0].answer) {
             score ++
         }
-        $(".questionSpace").empty();
+        $(".questionScreen").empty();
+        $(".answers").empty();
+        displayQuestion();
     })
-
-
-    // Declaring the timer interval function
-
-    let timerInterval = setInterval(() => {
-        $("#timer").text("Time left: " + timer);
-
-        timer--;
-
-        if (timer < 0) {
-
-            document.getElementById("question1").style.display = "none";
-            document.getElementById("question2").style.display = "none";
-            document.getElementById("finish").style.display = "none";
-            document.getElementById("next").style.display = "none";
-
-            $("#score").text("Score: " + score)
-            document.getElementById("score").style.display = "block";
-            
-
-            clearInterval(timerInterval);
-
-        }
-
-    }, 1000)
-
 })
-
-// Changing the CSS properties based on the buttons clicked
 
 
 $("#finish").on("click", () => {
-    document.getElementById("question2").style.display = "none";
-    document.getElementById("finish").style.display = "none";
 
+    document.querySelector(".questionSpace").style.display = "none";
     document.getElementById("score").style.display = "block";
     $("#score").text("Score: " + score)
 
@@ -101,7 +74,7 @@ $("#finish").on("click", () => {
     if (score > highScore) {
         $("#highScore").text("High Score: " + score);
         localStorage.setItem("highScore", score);
-    }
+    }    
 })
 
 //displaying the high score
@@ -113,3 +86,44 @@ $("#highScore").on("click", () => {
 $("#clearScore").on("click", () => {
     localStorage.clear();
 })
+
+    // Declaring the timer interval function
+    let timerInterval = setInterval(() => {
+        $("#timer").text("Time left: " + timer);
+    
+        timer--;
+    
+        if (timer < 0) {    
+            
+            document.querySelector(".questionSpace").style.display = "none";
+            document.getElementById("score").style.display = "block";
+            $("#score").text("Score: " + score)
+        
+            //Setting the local storage if the score entered is the high score
+            if (score > highScore) {
+                $("#highScore").text("High Score: " + score);
+                localStorage.setItem("highScore", score);
+            }
+    
+            clearInterval(timerInterval);
+    
+        }
+    
+    }, 1000)
+
+function displayQuestion() {
+
+    $(".questionScreen").append(`${questions[1].title}`);
+
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="a"> ${questions[1].choices[0]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="b"> ${questions[1].choices[1]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="c"> ${questions[1].choices[2]} </a>`)
+
+    $(".list-group-item").on("click", (e) => {
+        let selectedAnswer = e.currentTarget.attributes[2].nodeValue;
+        console.log(selectedAnswer)
+        if (selectedAnswer === questions[0].answer) {
+            score ++
+        }       
+    })
+}
