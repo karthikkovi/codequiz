@@ -75,6 +75,7 @@ $("#finish").on("click", () => {
         $("#highScore").text("High Score: " + score);
         localStorage.setItem("highScore", score);
     }    
+    
 })
 
 //displaying the high score
@@ -97,6 +98,7 @@ $("#clearScore").on("click", () => {
             
             document.querySelector(".questionSpace").style.display = "none";
             document.getElementById("score").style.display = "block";
+            document.getElementById("mainPage").style.display = "none";
             $("#score").text("Score: " + score)
         
             //Setting the local storage if the score entered is the high score
@@ -124,6 +126,36 @@ function displayQuestion() {
         console.log(selectedAnswer)
         if (selectedAnswer === questions[0].answer) {
             score ++
-        }       
+        }
+        $(".questionScreen").empty();
+        $(".answers").empty();
+        displayQuestion2();       
+    })
+}
+
+function displayQuestion2() {
+
+    $(".questionScreen").append(`${questions[2].title}`);
+
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="a"> ${questions[2].choices[0]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="b"> ${questions[2].choices[1]} </a>`)
+    $(".answers").append(`<a href="#" class="list-group-item list-group-item-action" data-choice="c"> ${questions[2].choices[2]} </a>`)
+
+    $(".list-group-item").on("click", (e) => {
+        let selectedAnswer = e.currentTarget.attributes[2].nodeValue;
+        console.log(selectedAnswer)
+        if (selectedAnswer === questions[2].answer) {
+            score ++
+        }
+        
+        document.querySelector(".questionSpace").style.display = "none";
+        document.getElementById("score").style.display = "block";
+        $("#score").text("Score: " + score)
+    
+        //Setting the local storage if the score entered is the high score
+        if (score > highScore) {
+            $("#highScore").text("High Score: " + score);
+            localStorage.setItem("highScore", score);
+        }   
     })
 }
