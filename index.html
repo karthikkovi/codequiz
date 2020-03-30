@@ -20,11 +20,13 @@
         <!-- Boot strap container to display the initial screen -->
         <div class="container col-lg-6 col-md-8 col-sm-12 mt-3" id="mainPage">
             <h1>Coding Quiz Challenge</h1>
-            <p>Welcome to JavaScript coding quiz. Push the submit button to start the quiz</p>
+            <p>Welcome to JavaScript coding quiz. </p>
+            <p>For every correct answer score will be incremented by 1, for every incorrect answer timer will be reduced by 5 seconds</p>
+            <p>Push the start button to start the quiz</p>
             <button id="start" type="button" class="btn btn-primary">Start the quiz</button>
         </div>
 
-        <div class="ml-auto mr-auto questionSpace">
+        <div class="ml-auto mr-auto col-md-8 questionSpace">
             <h1 class="questionScreen"></h1>
             <ul class="list-group answers"> </ul>
             <button id="finish" type="button" class="btn btn-primary mt-3" style="display: none;">finish</button>

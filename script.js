@@ -70,6 +70,8 @@ let timerInterval = setInterval(() => {
         console.log(selectedAnswer)
         if (selectedAnswer === questions[0].answer) {
             score++
+        } else {
+            timer -= 5;
         }
         $(".questionScreen").empty();
         $(".answers").empty();
@@ -117,6 +119,8 @@ function displayQuestion() {
         console.log(selectedAnswer)
         if (selectedAnswer === questions[0].answer) {
             score++
+        } else {
+            timer -= 5;
         }
         $(".questionScreen").empty();
         $(".answers").empty();
@@ -137,6 +141,8 @@ function displayQuestion2() {
         console.log(selectedAnswer)
         if (selectedAnswer === questions[2].answer) {
             score++
+        } else {
+            timer -= 5;
         }
 
         document.querySelector(".questionSpace").style.display = "none";
